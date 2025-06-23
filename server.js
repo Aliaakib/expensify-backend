@@ -22,7 +22,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 app.get("/", (req, res) => {
-  res.send("Backend is running!!!! 🚀");
+  res.send("Backend is running on vercel!!! 🚀");
 });
 
 // 👉 Export the app (do NOT call app.listen)

@@ -7,7 +7,10 @@ const router = express.Router();
 
 // Register
 router.post("/register", async (req, res) => {
+  console.log("Incoming register payload:", req.body); // 🔍 Debug line
+
   const { name, email, phone, password, confirmPassword } = req.body;
+
   try {
     if (password !== confirmPassword)
       return res.status(400).json({ message: "Passwords do not match" });
@@ -23,11 +26,14 @@ router.post("/register", async (req, res) => {
       phone,
       password: hashedPassword,
     });
+
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
+    console.error("❌ Registration error:", err); // 🐛 Add this for stacktrace
     res.status(500).json({ message: "Server error" });
   }
 });
+
 
 // Login
 router.post("/login", async (req, res) => {
